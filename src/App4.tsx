@@ -1,5 +1,5 @@
 import { Reducer, useReducer } from "react";
-
+import {produce} from 'immer';
 interface Data {
     a: {
         c: {
@@ -21,16 +21,10 @@ function reducer(state: Data, action: Action) {
 
     switch(action.type) {
         case 'add':
-            return {
-                ...state,
-                a: {
-                    ...state.a,
-                    c: {
-                        ...state.a.c,
-                        e: state.a.c.e + action.num,
-                    },
-                },
-            }
+          return produce(state, (state) => {
+            state.a.c.e += action.num
+          })
+        
     }
     return state;
 }
