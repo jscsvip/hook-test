@@ -1,4 +1,4 @@
- import { Reducer,useReducer } from 'react';
+ import { Reducer,useReducer,useState  } from 'react';
 
  interface Data {
   result: number;
@@ -34,5 +34,16 @@ function App() {
     </div>
   );
 }
+// 用useState简化版
+function App2() {
+  const [res, setRes] = useState({ result: 0});
 
+  return (
+    <div>
+        <div onClick={() => setRes({ result: res.result + 2 })}>加</div>
+        <div onClick={() => setRes({ result: res.result - 1 })}>减</div>
+        <div>{res.result}</div>
+    </div>
+  );
+}
 export default App;
