@@ -7,7 +7,7 @@ function App() {
         setCount(count + 1);
     };
     const ref = useRef(updateCount);
-
+    // 使用ref每次获取最新的
     ref.current = updateCount;
 
     useEffect(() => {
